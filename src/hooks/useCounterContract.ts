@@ -35,7 +35,7 @@ export function useCounterContract() {
     value: val,
     address: counterContract?.address.toString(),
     sendIncrement: () => {
-      return counterContract?.sendIncrease(sender,{value: BigInt(0x7e8764ef), increaseBy: 1});
+      return counterContract?.sendIncrement(sender);
     },
   };
 }
