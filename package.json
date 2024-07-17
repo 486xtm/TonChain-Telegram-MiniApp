@@ -13,6 +13,8 @@
     "@orbs-network/ton-access": "^2.3.3",
     "@ton/core": "^0.56.3",
     "@ton/crypto": "^3.2.0",
+    "@ton/sandbox": "^0.20.0",
+    "@ton/test-utils": "^0.4.2",
     "@ton/ton": "^13.11.2",
     "@tonconnect/ui-react": "^2.0.6",
     "@twa-dev/sdk": "^7.0.0",
