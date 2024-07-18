@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import { Cell } from "@ton/core";
 import { Blockchain, SandboxContract, TreasuryContract } from "@ton/sandbox";
-import Counter from "./counter"; // this is the interface class from tutorial 2
+import Counter from "./Counter"; // this is the interface class from tutorial 2
 
 describe("Counter tests", () => {
   let blockchain: Blockchain;
