@@ -11,14 +11,15 @@ export function useCounterContract() {
   const { sender } = useTonConnect();
 
   const sleep = (time: number) => new Promise((resolve) => setTimeout(resolve, time));
-
+  
   const counterContract = useAsyncInitialize(async () => {
     if (!client) return;
     const contract = new Counter(
-      Address.parse("EQBU0kBKgYg3doseYMsAGoqpU3hQ63Vr172axCHYrdClo1pu")
+      Address.parse('EQCSdLKu0zU8v9PUZcoNsD1Kfgof_ruRis1YTZIAzCtHk2wG') // replace with your address from tutorial 2 step 8
     );
     return client.open(contract) as OpenedContract<Counter>;
   }, [client]);
+
   useEffect(() => {
     async function getValue() {
       if (!counterContract) return;
