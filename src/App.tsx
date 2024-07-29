@@ -2,7 +2,7 @@ import "./App.css";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useCounterContract } from "./hooks/useCounterContract";
 import { useTonConnect } from "./hooks/useTonConnect";
-import '@twa-dev/sdk';
+import WebApp from '@twa-dev/sdk';
 import eruda from 'eruda';
 eruda.init();
 function App() {
@@ -28,6 +28,9 @@ function App() {
         >
           Increment
         </a>
+        <button onClick={() => WebApp.showAlert(`Hello World! Current count is ${value}`)}>
+            Show Alert
+        </button>
       </div>
     </>
   );
