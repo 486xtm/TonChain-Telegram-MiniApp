@@ -1,5 +1,4 @@
 import "./App.css";
-import {useEffect} from 'react';
 import { useCounterContract } from "./hooks/useCounterContract";
 import { useTonConnect } from "./hooks/useTonConnect";
 import WebApp from "@twa-dev/sdk";
