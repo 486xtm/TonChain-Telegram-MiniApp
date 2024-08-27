@@ -5,7 +5,7 @@ import WebApp from "@twa-dev/sdk";
 import eruda from "eruda";
 eruda.init();
 import {
-  TonConnectButton,
+  // TonConnectButton,
   useTonAddress,
   useTonWallet,
 } from "@tonconnect/ui-react";
