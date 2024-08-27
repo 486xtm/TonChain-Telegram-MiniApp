@@ -1,17 +1,18 @@
-import "./App.css";
 import { useCounterContract } from "./hooks/useCounterContract";
 import { useTonConnect } from "./hooks/useTonConnect";
+import Header from "./component/Header";
 import WebApp from "@twa-dev/sdk";
 import eruda from "eruda";
 eruda.init();
 import {
-  TonConnectButton,
+  // TonConnectButton,
   useTonAddress,
   useTonWallet,
 } from "@tonconnect/ui-react";
 import { Locales, useTonConnectUI } from "@tonconnect/ui-react";
-import { THEME } from '@tonconnect/ui';
-import { useIsConnectionRestored } from '@tonconnect/ui-react';
+import { THEME } from "@tonconnect/ui";
+import { useIsConnectionRestored } from "@tonconnect/ui-react";
+
 function App() {
   const { connected } = useTonConnect();
   const { value, address, sendIncrement } = useCounterContract();
@@ -30,7 +31,7 @@ function App() {
       },
     });
   };
-
+  
   const myTransaction = {
     validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
     messages: [
@@ -44,37 +45,38 @@ function App() {
       },
     ],
   };
-
+  
   const connectionRestored = useIsConnectionRestored();
   if (!connectionRestored) {
     return <h1>Please wait...</h1>;
-}
+  }
 
-// tonConnectUI.setConnectRequestParameters({
-//   state: 'loading'
-// });
-// const tonProofPayload: string | null = await fetchTonProofPayloadFromBackend();
+  // tonConnectUI.setConnectRequestParameters({
+  //   state: 'loading'
+  // });
+  // const tonProofPayload: string | null = await fetchTonProofPayloadFromBackend();
 
-// if (!tonProofPayload) {
-//     // remove loader, connect request will be without any additional parameters
-//     tonConnectUI.setConnectRequestParameters(null);
-// } else {
-//     // add tonProof to the connect request
-//     tonConnectUI.setConnectRequestParameters({
-//         state: "ready",
-//         value: { tonProof: tonProofPayload }
-//     });
-// }
-// useEffect(() =>
-//   tonConnectUI.onStatusChange(wallet => {
-//       if (wallet.connectItems?.tonProof && 'proof' in wallet.connectItems.tonProof) {
-//           checkProofInYourBackend(wallet.connectItems.tonProof.proof, wallet.account);
-//       }
-//   }), []);
+  // if (!tonProofPayload) {
+  //     // remove loader, connect request will be without any additional parameters
+  //     tonConnectUI.setConnectRequestParameters(null);
+  // } else {
+  //     // add tonProof to the connect request
+  //     tonConnectUI.setConnectRequestParameters({
+  //         state: "ready",
+  //         value: { tonProof: tonProofPayload }
+  //     });
+  // }
+  // useEffect(() =>
+  //   tonConnectUI.onStatusChange(wallet => {
+  //       if (wallet.connectItems?.tonProof && 'proof' in wallet.connectItems.tonProof) {
+  //           checkProofInYourBackend(wallet.connectItems.tonProof.proof, wallet.account);
+  //       }
+  //   }), []);
   return (
-    <>
+    <div>
+      <Header/>
       <div className="Container">
-        <TonConnectButton />
+        <div></div>
         <div className="Card">
           <b>Counter Address </b>
           <div className="Hint">{address?.slice(0.3) + "..."}</div>
@@ -83,6 +85,7 @@ function App() {
           <b>Counter Value</b>
           <div>{value ?? "Loading"}</div>
         </div>
+
         <a
           className={`Button ${connected ? "Active" : "Disabled"}`}
           onClick={() => {
@@ -114,13 +117,19 @@ function App() {
           </div>
         )}
 
-        <button
-          onClick={async () =>
-            await tonConnectUI.sendTransaction(myTransaction)
-          }
-        >
-          Send transaction
-        </button>
+        {wallet ? (
+          <button
+            onClick={async () =>
+              await tonConnectUI.sendTransaction(myTransaction)
+            }
+          >
+            Send transaction
+          </button>
+        ) : (
+          <button onClick={() => tonConnectUI.openModal()}>
+            Connect wallet to send the transaction
+          </button>
+        )}
         <div>
           <label>language</label>
           <select onChange={(e) => onLanguageChange(e.target.value)}>
@@ -128,9 +137,10 @@ function App() {
             <option value="ru">ru</option>
           </select>
         </div>
-        <button onClick={() => tonConnectUI.disconnect()} >Disconnect</button>
+        <button onClick={() => tonConnectUI.disconnect()}>Disconnect</button>
+        {/* <button onClick={() => deploy()}>deploy Contract</button> */}
       </div>
-    </>
+    </div>
   );
 }
 
