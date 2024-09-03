@@ -2,7 +2,7 @@
   "name": "25",
   "description": "",
   "external_url": "",
-  "image": "25.png",
+  "image": "https://ton-chain-telegram-mini-app.vercel.app/image/25.png",
   "attributes": [
     {
       "trait_type": "Background",
