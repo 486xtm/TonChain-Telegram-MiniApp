@@ -1,8 +1,8 @@
 {
   "name": "0",
-  "description": "",
+  "description": "0",
   "external_url": "",
-  "image": "0.png",
+  "image": "https://ton-chain-telegram-mini-app.vercel.app/image/0.png",
   "attributes": [
     {
       "trait_type": "Background",
