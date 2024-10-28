@@ -79,7 +79,7 @@ function App() {
         <div></div>
         <div className="Card">
           <b>Counter Address </b>
-          <div className="Hint">{address?.slice(0.3) + "..."}</div>
+          <div className="Hint">{address?.slice(0,10) + "..." + address?.slice(address.length-5, address.length)}</div>
         </div>
         <div className="Card">
           <b>Counter Value</b>
