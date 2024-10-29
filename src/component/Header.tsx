@@ -27,18 +27,6 @@ const Header = () => {
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <a
-              href="#"
-              className="hover:bg-[#f5f8fa] text-black font-bold py-1 px-2 rounded-md text-sm hover:bg-[#0077B5] transition duration-300 flex items-center"
-            >
-              Telegram
-            </a>
-            <a
-              href="#"
-              className="hover:bg-[#f5f8fa] text-black font-bold py-1 px-2 rounded-md text-sm hover:bg-[#0077B5] transition duration-300 flex items-center"
-            >
-              YouTube
-            </a>
               <TonConnectButton/> 
           </div>
         </div>
